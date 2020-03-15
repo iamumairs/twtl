@@ -9,7 +9,7 @@ A holds_for 3
 
 
 ```
-(A holds_for 3) * (A holds_for 3) 
+(A holds_for 3) * (B holds_for 3) 
 ```
 
 
