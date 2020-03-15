@@ -1,5 +1,6 @@
 # Rewriting for Time Window Temporal Logic
 
+'''
 ./twtl.native "A holds_for 3"
 ======================================== 
 Entered TWLTL Formula: A holds_for 3 time units
@@ -26,4 +27,4 @@ Pure Rewrite Step: True
 Simplified Formula: True
 ======================================== 
 **** STOPPING: Further rewriting will not change the evaluation **** 
-
+'''
