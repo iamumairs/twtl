@@ -6,6 +6,17 @@
 ```
 A holds_for 3
 
+```
+
+
+```
+(A holds_for 3) * (A holds_for 3) 
+```
+
+
+```
+(A holds_for 3) within [0,5]
+```
 
 
 
@@ -36,4 +47,4 @@ Pure Rewrite Step: True
 Simplified Formula: True
 ======================================== 
 **** STOPPING: Further rewriting will not change the evaluation **** 
-'''
+```
