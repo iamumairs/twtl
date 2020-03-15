@@ -1,5 +1,20 @@
 # Rewriting for Time Window Temporal Logic
 
+## Examples for Syntax
+
+```
+A holds_for 3
+'''
+
+```
+(A holds_for 3) * (A holds_for 3) 
+'''
+
+```
+(A holds_for 3) within [0,5]
+'''
+
+
 ```
 ./twtl.native "A holds_for 3"
 ======================================== 
