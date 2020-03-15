@@ -2,19 +2,11 @@
 
 ## Examples for Syntax
 
+
 ```
 A holds_for 3
 '''
 
-
-```
-(A holds_for 3) * (A holds_for 3) 
-'''
-
-
-```
-(A holds_for 3) within [0,5]
-'''
 
 
 ```
