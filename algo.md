@@ -72,11 +72,11 @@ Progress Hold(d,p) ei =  match d with
 ```ocaml
 Progress NotHold(d,p) ei =  match d with 
                              | 1 -> if (p NOT_IN (p_event ei) then True else False 
-                             | _ -> (if (p NOT_IN (p_event ei) then True else False) \& NotHold(d-1,p)
+                             |  -> (if (p NOT_IN (p_event ei) then True else False) & NotHold(d-1,p)
 ```  
 ### And 
 ```ocmal
-Progress (f_1 \& f_2) ei = (Progress f_1 ei) \& (Progress f_2 ei)
+Progress (f_1 \& f_2) ei = (Progress f_1 ei) & (Progress f_2 ei)
 ```
 ### Or 
 ```ocmal
