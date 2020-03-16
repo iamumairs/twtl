@@ -61,14 +61,23 @@ Progress True ei = True
 Progress False ei = False
 ```
 ### Hold
-Not that in match statement " _ " represents any other case. 
+Note that in match statement " _ " represents any other case. 
 
 ```ocaml
 Progress Hold(d,p) ei =  match d with 
                              | 0 -> if (p IN (p_event ei) then True else False
                              | 1 -> if (p IN (p_event ei) then True else False 
                              | _ -> (if (p IN (p_event ei) then True else False) & Hold(d-1,p)
+```         
+Alternatively:
+
+```ocaml
+Progress Hold(d,p) ei =  match d with 
+                             | 0 -> if (p IN (p_event ei) then True else False
+                             | 1 -> if (p IN (p_event ei) then True else False 
+                             | _ -> (if (p IN (p_event ei) then Hold(d-1,p) else False
 ```                             
+
 ### NotHold
 ```ocaml
 Progress NotHold(d,p) ei =  match d with 
