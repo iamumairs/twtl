@@ -33,7 +33,7 @@ type twtl_formula =
   | Within of interval * twtl_formula
 ```
 ### Backus Naur form for TWTL
-$ y=\sum_{i=1}^n g(x_i) $
+$$ y=\sum_{i=1}^n g(x_i) $$
 
 ```
 phi = T | F | Hold p | NotHold p | phi_1 & phi_2 | phi_1 || phi_2 | 
