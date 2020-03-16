@@ -74,7 +74,7 @@ Progress Hold(d,p) ei =  match d with
 Progress NotHold(d,p) ei =  match d with 
                              | 0 -> if (p NOT_IN (p_event ei) then True else False
                              | 1 -> if (p NOT_IN (p_event ei) then True else False
-                             |  -> (if (p NOT_IN (p_event ei) then True else False) & NotHold(d-1,p)
+                             | _ -> (if (p NOT_IN (p_event ei) then True else False) & NotHold(d-1,p)
 ```  
 ### And 
 ```ocaml
