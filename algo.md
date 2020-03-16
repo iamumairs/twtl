@@ -33,13 +33,6 @@ type twtl_formula =
   | Within of interval * twtl_formula
 ```
 ### Backus Naur form for TWTL
-Some inline math $$a = b$$
-
-And a block of math:
-$$
-a = b
-$$
-
 ```
 phi = T | F | Hold p | NotHold p | phi_1 & phi_2 | phi_1 || phi_2 | 
       Neg phi | phi_1 Imply phi_2  | phi_1  * phi_2 | phi within [ti,tj] 
