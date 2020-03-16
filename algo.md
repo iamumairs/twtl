@@ -52,6 +52,18 @@ Note that the progress function accepts an twtl formula and i-th event and retur
 ```ocaml
 Progress: twtl_formula x event -> twtl_formula
 ```
-
-
-
+### True 
+```Ocaml 
+Progress True ei = True
+```
+### False 
+```Ocaml 
+Progress True ei = True
+```
+### Hold
+### NotHold
+### And 
+### Or 
+### Imply
+### Concat 
+### Within 
