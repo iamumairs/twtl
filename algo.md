@@ -5,7 +5,7 @@ An event is defined as a pair of time-stamp and set/list of propositions, e.g., 
 type event = int * string list
 ```
 ## Trace
-A trace is defined is list of events, e.g., t = [(1,[p,q]),(2,[p]),(3,[p,q,r])]. Note that time stamps are assumed to be strictly increasing, i.e., t_i < t_i+1 < t_i+2 < ... 
+A trace is defined as a list of events, e.g., t = [(1,[p,q]),(2,[p]),(3,[p,q,r])]. Note that time stamps are assumed to be strictly increasing, i.e., t_i < t_i+1 < t_i+2 < ... 
 ```ocmal
 type trace = event list
 ```
