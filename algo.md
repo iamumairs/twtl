@@ -15,3 +15,19 @@ A closed interval is defined as a pair of integers  and it represents [i,j]
 ```
 type interval = int * int
 ```
+
+## TWTL Syntax
+
+```ocaml
+type twtl_formula =
+    True
+  | False
+  | Hold of int * string
+  | NotHold of int * string
+  | And of twtl_formula * twtl_formula
+  | Or of twtl_formula * twtl_formula
+  | Imply of twtl_formula * twtl_formula
+  | Neg of twtl_formula
+  | Concat of twtl_formula * twtl_formula
+  | Within of interval * twtl_formula
+```
