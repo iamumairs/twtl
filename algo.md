@@ -34,7 +34,7 @@ type twtl_formula =
 ```
 ### Backus Naur form for TWTL
 ```
-phi = T | F | Hold p | NotHold p | phi_1 & phi_2 | phi_1 || phi_2 | 
+phi = T | F | Hold (d,p) | NotHold (d,p) | phi_1 & phi_2 | phi_1 || phi_2 | 
       Neg phi | phi_1 Imply phi_2  | phi_1  * phi_2 | phi within [ti,tj] 
 ```
 ## Helper Functions
@@ -58,9 +58,15 @@ Progress True ei = True
 ```
 ### False 
 ```Ocaml 
-Progress True ei = True
+Progress False ei = False
 ```
 ### Hold
+Not that in match statement " _ " represents any other case. 
+
+```ocaml
+Progress Hold(d,p) ei =  match d with
+				             | 1 -> if (p IN (p_event ei) then True else False 
+```							 | _ -> (if (p IN (p_event ei) then True else False) & Hold(d-1,p)
 ### NotHold
 ### And 
 ### Or 
