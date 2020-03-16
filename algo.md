@@ -48,7 +48,7 @@ let t_event (e:event) = fst e
 For example, p_event (1,[p,q]) = [p,q] and t_event (1,[p,q]) = 1.
 
 ## Progress Function
-Note that the progress function accepts an twtl formula and i-th event and return a twtl formula. 
+Note that the progress function accepts a twtl formula and i-th event and returns a twtl formula. 
 ```ocaml
 Progress: twtl_formula x event -> twtl_formula
 ```
