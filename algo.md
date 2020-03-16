@@ -1,4 +1,4 @@
-#Definitions
+# Definitions
 ```
 type event = int * string list
 type trace = event list
