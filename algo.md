@@ -39,7 +39,7 @@ phi = T | F | Hold p | NotHold p | phi_1 & phi_2 | phi_1 || phi_2 |
 ```
 ## Helper Functions
 
-Following two functions "p_event" and "t_event" accepts an event and provide the coresponding list of propositions and time-stamp, respectively.
+Following two functions "p_event" and "t_event" accept an event and provide the coresponding list of propositions and time-stamp, respectively.
 
 ```ocaml
 let p_event (e:event) = snd e 
