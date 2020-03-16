@@ -35,7 +35,7 @@ type twtl_formula =
 ### Backus Naur form for TWTL
 ```
 phi = T | F | Hold (d,p) | NotHold (d,p) | phi_1 & phi_2 | phi_1 || phi_2 | 
-      Neg phi | phi_1 Imply phi_2  | phi_1  * phi_2 | phi within [ti,tj] 
+      ~ phi | phi_1 Imply phi_2  | phi_1  * phi_2 | phi within [ti,tj] 
 ```
 ## Helper Functions
 
@@ -72,10 +72,28 @@ Progress Hold(d,p) ei =  match d with
 ```ocaml
 Progress NotHold(d,p) ei =  match d with 
                              | 1 -> if (p NOT_IN (p_event ei) then True else False 
-                             | _ -> (if (p NOT_IN (p_event ei) then True else False) & Hold(d-1,p)
+                             | _ -> (if (p NOT_IN (p_event ei) then True else False) & NotHold(d-1,p)
 ```  
 ### And 
+```ocmal
+Progress (f_1 & f_2) ei = (Progress f_1 ei) & (Progress f_2 ei)
+```
 ### Or 
+```ocmal
+Progress (f_1 || f_2) ei = (Progress f_1 ei) || (Progress f_2 ei)
+```
 ### Imply
+```ocmal
+Progress (f_1 || f_2) ei = ~(Progress f_1 ei) || (Progress f_2 ei)
+```
+### Neg
+```ocmal
+Progress (~ f) ei = ~(Progress f ei) 
+```
+
 ### Concat 
+```ocmal
+Progress (f_1 * f_2) ei = if (progress f_1 ei) = True then (progress f_1 ei) 
+                          else Concat((progress f_1 ei),f_2))
+```
 ### Within 
