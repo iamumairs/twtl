@@ -69,6 +69,7 @@ let rec progress (form:twtl_formula) ei =
 							 				     | _ -> And(lift_truth(not(List.mem p (p_event(ei)))), NotHold (d - 1,p)))
 			| Or (f1,f2) -> Or(progress f1 ei, progress f2 ei)
 			| And(f1,f2) -> And(progress f1 ei, progress f2 ei)
+			| Neg f -> Neg(progress f ei)
 			| Imply(f1,f2) -> Or(Neg (progress f1 ei), progress f2 ei)
 			| Concat (f1,f2) -> (if (progress f1 ei) = True then (progress f1 ei)
 			                     else Concat((progress f1 ei),f2))
