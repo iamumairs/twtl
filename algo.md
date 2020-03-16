@@ -16,7 +16,8 @@ A closed interval is defined as a pair of integers  and it represents [i,j]
 type interval = int * int
 ```
 
-## TWTL Syntax
+## TWTL Syntax 
+### Ocaml Type Definition for TWTL
 
 ```ocaml
 type twtl_formula =
