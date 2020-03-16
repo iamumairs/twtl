@@ -99,3 +99,6 @@ Progress (f_1 * f_2) ei = if (progress f_1 ei) = True then (progress f_1 ei)
                           else Concat((progress f_1 ei),f_2))
 ```
 ### Within 
+```ocaml
+Progress (f Within [t,t']) ei = (progress f ei) ||  (f Within [t-1,t'-1])
+```
