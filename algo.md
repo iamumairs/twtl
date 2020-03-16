@@ -78,14 +78,17 @@ Progress NotHold(d,p) ei =  match d with
 ```ocmal
 Progress (f_1 & f_2) ei = (Progress f_1 ei) & (Progress f_2 ei)
 ```
+
 ### Or 
 ```ocmal
 Progress (f_1 || f_2) ei = (Progress f_1 ei) || (Progress f_2 ei)
 ```
+
 ### Imply
 ```ocmal
 Progress (f_1 || f_2) ei = ~(Progress f_1 ei) || (Progress f_2 ei)
 ```
+
 ### Neg
 ```ocmal
 Progress (~ f) ei = ~(Progress f ei) 
