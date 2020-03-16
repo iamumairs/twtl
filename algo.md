@@ -37,5 +37,15 @@ type twtl_formula =
 phi = T | F | Hold p | NotHold p | phi_1 & phi_2 | phi_1 || phi_2 | 
       Neg phi | phi_1 Imply phi_2  | phi_1  * phi_2 | phi within [ti,tj] 
 ```
+## Helper Functions
+
+Following two functions "p_event" and "t_event" accepts an event and provide the coresponding list of propositions and time-stamp, respectively.
+
+```ocaml
+let p_event (e:event) = snd e 
+let t_event (e:event) = fst e 
+```
+For example, p_event (1,[p,q]) = [p,q] and t_event (1,[p,q]) = 1.
+
 
 
