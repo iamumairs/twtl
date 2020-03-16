@@ -75,26 +75,26 @@ Progress NotHold(d,p) ei =  match d with
                              |  -> (if (p NOT_IN (p_event ei) then True else False) & NotHold(d-1,p)
 ```  
 ### And 
-```ocmal
-Progress (f_1 \& f_2) ei = (Progress f_1 ei) & (Progress f_2 ei)
+```ocaml
+Progress (f_1 & f_2) ei = (Progress f_1 ei) & (Progress f_2 ei)
 ```
 ### Or 
-```ocmal
+```ocaml
 Progress (f_1 || f_2) ei = (Progress f_1 ei) || (Progress f_2 ei)
 ```
 
 ### Imply
-```ocmal
+```ocaml
 Progress (f_1 || f_2) ei = ~(Progress f_1 ei) || (Progress f_2 ei)
 ```
 
 ### Neg
-```ocmal
+```ocaml
 Progress (~ f) ei = ~(Progress f ei) 
 ```
 
 ### Concat 
-```ocmal
+```ocaml
 Progress (f_1 * f_2) ei = if (progress f_1 ei) = True then (progress f_1 ei) 
                           else Concat((progress f_1 ei),f_2))
 ```
