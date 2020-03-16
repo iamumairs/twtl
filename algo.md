@@ -65,13 +65,15 @@ Not that in match statement " _ " represents any other case.
 
 ```ocaml
 Progress Hold(d,p) ei =  match d with 
+                             | 0 -> if (p IN (p_event ei) then True else False
                              | 1 -> if (p IN (p_event ei) then True else False 
                              | _ -> (if (p IN (p_event ei) then True else False) & Hold(d-1,p)
 ```                             
 ### NotHold
 ```ocaml
 Progress NotHold(d,p) ei =  match d with 
-                             | 1 -> if (p NOT_IN (p_event ei) then True else False 
+                             | 0 -> if (p NOT_IN (p_event ei) then True else False
+                             | 1 -> if (p NOT_IN (p_event ei) then True else False
                              |  -> (if (p NOT_IN (p_event ei) then True else False) & NotHold(d-1,p)
 ```  
 ### And 
