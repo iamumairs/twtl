@@ -65,9 +65,9 @@ Note that in match statement " _ " represents any other case.
 
 ```ocaml
 Progress Hold(d,p) ei =  match d with 
-                             | 0 -> if (p $\in$ (p_event ei) then True else False
-                             | 1 -> if (p $\in$ (p_event ei) then True else False 
-                             | _ -> (if (p $\in$ (p_event ei) then True else False) & Hold(d-1,p)
+                             | 0 -> if (p $$\in$$ (p_event ei) then True else False
+                             | 1 -> if (p $$\in$$ (p_event ei) then True else False 
+                             | _ -> (if (p $$\in$$ (p_event ei) then True else False) & Hold(d-1,p)
 ```         
 Alternatively:
 
