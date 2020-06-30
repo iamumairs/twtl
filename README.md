@@ -1,5 +1,7 @@
 # Rewriting for Time Window Temporal Logic
 
+## Executable: twtl.native
+
 ## Examples for Syntax
 
 
