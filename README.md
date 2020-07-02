@@ -1,4 +1,4 @@
-# Rewriting-based Monitoring for Time Window Temporal Logic
+# Rewriting Algorithm for Time Window Temporal Logic
 
 ## Executable: twtl.native
 
