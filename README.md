@@ -6,7 +6,7 @@
 
 - Interactive Verification (receives events through command-line)
 ```
-./twtl.native -automatic "(A holds_for 3) within [0,5]"
+./twtl.native -interactive "(A holds_for 3) within [0,5]"
 ```
 - Automatic Verification (accepts complete trace as .trace file)
 ```
