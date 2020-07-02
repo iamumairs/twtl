@@ -1,0 +1,105 @@
+### Starting build.
+# Target: src/twtl.ml.depends, tags: { package(str), package(unix), extension:ml, file:src/twtl.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package str -package unix -modules src/twtl.ml > src/twtl.ml.depends
+# Target: src/formula.ml.depends, tags: { package(str), package(unix), extension:ml, file:src/formula.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package str -package unix -modules src/formula.ml > src/formula.ml.depends
+# Target: lexer.mll, tags: { package(str), package(unix), extension:mll, file:lexer.mll, lexer, ocaml, ocamllex, quiet }
+ocamllex.opt -q lexer.mll
+# Target: lexer.ml.depends, tags: { package(str), package(unix), extension:ml, file:lexer.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package str -package unix -modules lexer.ml > lexer.ml.depends
+# Target: parser.mly.depends, tags: { package(str), package(unix), extension:mly, file:parser.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet }
+menhir --explain --raw-depend --ocamldep 'ocamlfind ocamldep -modules' parser.mly > parser.mly.depends
++ menhir --explain --raw-depend --ocamldep 'ocamlfind ocamldep -modules' parser.mly > parser.mly.depends
+File "parser.mly", line 16, characters 7-10:
+Warning: the token DOT is unused.
+File "parser.mly", line 8, characters 7-12:
+Warning: the token EQUIV is unused.
+File "parser.mly", line 26, characters 13-17:
+Warning: the token Hold is unused.
+File "parser.mly", line 17, characters 7-15:
+Warning: the token INTERVAL is unused.
+File "parser.mly", line 46, characters 8-16:
+Warning: symbol interval is unreachable from any of the start symbol(s).
+# Target: src/formula.cmo, tags: { package(str), package(unix), byte, compile, extension:cmo, extension:ml, file:src/formula.cmo, file:src/formula.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -package str -package unix -I src -o src/formula.cmo src/formula.ml
+# Target: parser.mly, tags: { package(str), package(unix), byte, compile, extension:ml, extension:mly, file:parser.ml, file:parser.mly, infer, menhir, ocaml, parser, quiet }
+menhir --explain --ocamlc 'ocamlfind ocamlc -package str -package unix -I src' --infer parser.mly
++ menhir --explain --ocamlc 'ocamlfind ocamlc -package str -package unix -I src' --infer parser.mly
+File "parser.mly", line 16, characters 7-10:
+Warning: the token DOT is unused.
+File "parser.mly", line 8, characters 7-12:
+Warning: the token EQUIV is unused.
+File "parser.mly", line 26, characters 13-17:
+Warning: the token Hold is unused.
+File "parser.mly", line 17, characters 7-15:
+Warning: the token INTERVAL is unused.
+File "parser.mly", line 46, characters 8-16:
+Warning: symbol interval is unreachable from any of the start symbol(s).
+File "parser.mly", line 25, characters 0-5:
+Warning: the precedence level assigned to EQUIV is never useful.
+File "parser.mly", line 26, characters 0-5:
+Warning: the precedence level assigned to Hold is never useful.
+# Target: parser.mli.depends, tags: { package(str), package(unix), extension:mli, file:parser.mli, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package str -package unix -modules parser.mli > parser.mli.depends
+# Target: parser.cmi, tags: { package(str), package(unix), byte, compile, extension:mli, file:parser.mli, interf, ocaml, quiet }
+ocamlfind ocamlc -c -package str -package unix -I src -o parser.cmi parser.mli
+# Target: lexer.cmo, tags: { package(str), package(unix), byte, compile, extension:cmo, extension:ml, file:lexer.cmo, file:lexer.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -package str -package unix -I src -o lexer.cmo lexer.ml
+# Target: src/twtl.cmo, tags: { package(str), package(unix), byte, compile, extension:cmo, extension:ml, file:src/twtl.cmo, file:src/twtl.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -package str -package unix -I src -o src/twtl.cmo src/twtl.ml
++ ocamlfind ocamlc -c -package str -package unix -I src -o src/twtl.cmo src/twtl.ml
+File "src/twtl.ml", lines 19-23, characters 13-5:
+19 | .............(match (reduce e) with
+20 |       | True -> False
+21 |       | False -> True
+22 |       | Neg f -> reduce f
+23 |     )
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+(Hold (_, _)|NotHold (_, _)|And (_, _)|Or (_, _)|Imply (_, _)|Concat (_, _)|
+Within (_, _))
+File "src/twtl.ml", line 100, characters 3-4:
+100 |   |_ -> "I screwed up!!!"
+         ^
+Warning 11: this match case is unused.
+# Target: parser.ml.depends, tags: { package(str), package(unix), extension:ml, file:parser.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package str -package unix -modules parser.ml > parser.ml.depends
+# Target: src/formula.cmx, tags: { package(str), package(unix), compile, extension:cmx, extension:ml, file:src/formula.cmx, file:src/formula.ml, implem, native, ocaml, quiet }
+ocamlfind ocamlopt -c -package str -package unix -I src -o src/formula.cmx src/formula.ml
+# Target: parser.cmx, tags: { package(str), package(unix), compile, extension:cmx, extension:ml, file:parser.cmx, file:parser.ml, implem, native, ocaml, quiet }
+ocamlfind ocamlopt -c -package str -package unix -I src -o parser.cmx parser.ml
++ ocamlfind ocamlopt -c -package str -package unix -I src -o parser.cmx parser.ml
+File "parser.ml", line 115, characters 28-29:
+115 |                         let c = () in
+                                  ^
+Warning 26: unused variable c.
+File "parser.ml", line 116, characters 28-29:
+116 |                         let p = () in
+                                  ^
+Warning 26: unused variable p.
+File "parser.ml", line 117, characters 28-29:
+117 |                         let o = () in
+                                  ^
+Warning 26: unused variable o.
+# Target: lexer.cmx, tags: { package(str), package(unix), compile, extension:cmx, extension:ml, file:lexer.cmx, file:lexer.ml, implem, native, ocaml, quiet }
+ocamlfind ocamlopt -c -package str -package unix -I src -o lexer.cmx lexer.ml
+# Target: src/twtl.cmx, tags: { package(str), package(unix), compile, extension:cmx, extension:ml, file:src/twtl.cmx, file:src/twtl.ml, implem, native, ocaml, quiet }
+ocamlfind ocamlopt -c -package str -package unix -I src -o src/twtl.cmx src/twtl.ml
++ ocamlfind ocamlopt -c -package str -package unix -I src -o src/twtl.cmx src/twtl.ml
+File "src/twtl.ml", lines 19-23, characters 13-5:
+19 | .............(match (reduce e) with
+20 |       | True -> False
+21 |       | False -> True
+22 |       | Neg f -> reduce f
+23 |     )
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+(Hold (_, _)|NotHold (_, _)|And (_, _)|Or (_, _)|Imply (_, _)|Concat (_, _)|
+Within (_, _))
+File "src/twtl.ml", line 100, characters 3-4:
+100 |   |_ -> "I screwed up!!!"
+         ^
+Warning 11: this match case is unused.
+# Target: src/twtl.native, tags: { package(str), package(unix), dont_link_with, extension:native, file:src/twtl.native, link, native, ocaml, program, quiet }
+ocamlfind ocamlopt -linkpkg -package str -package unix -I src src/formula.cmx parser.cmx lexer.cmx src/twtl.cmx -o src/twtl.native
+# Compilation successful.
