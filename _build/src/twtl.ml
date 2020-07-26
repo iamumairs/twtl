@@ -1,6 +1,13 @@
 open Formula
 open Printf
 
+let rec zip (a,b) =
+  match (a,b) with
+    ([],[]) -> []
+    | ([],n::ns)-> []
+    | (n::ns,[]) -> []
+    | (k::ks, h::hs) -> (k,h)::zip(ks,hs);;
+
 let l_interval (i:interval) = fst i
 let u_interval (i:interval) = snd i
 let in_interval x (i:interval) = (l_interval i) <= x && x <= (u_interval i)
@@ -99,6 +106,8 @@ let rec string_of_formula f = match f with
   | Within ((x,y),g) -> (string_of_formula g)^" within "^"["^string_of_int(x)^","^string_of_int(y)^"]"
   |_ -> "I screwed up!!!"
 
+(*
+
 let twtl_monitor_interactive f =
   let f' = string_of_formula f in
   print_string ("======================================== \n");
@@ -140,6 +149,8 @@ let twtl_monitor_interactive f =
         ff := p'
       end
   done
+*)
+
 
 let monitor_progress formula e =
 
@@ -190,6 +201,52 @@ let () =
   print_string ("======================================== \n");
 *)
 
+let dir_contents dir =
+  let rec loop result = function
+    | f::fs when Sys.is_directory f ->
+          Sys.readdir f
+          |> Array.to_list
+          |> List.map (Filename.concat f)
+          |> List.append fs
+          |> loop result
+    | f::fs -> loop (f::result) fs
+    | []    -> result
+  in
+    loop [] [dir]
+
+
+
+
+let str_of_tuple (a,b,c) =
+    let a' = string_of_formula a in
+    let b' = string_of_float b in
+    let c' = string_of_float c in
+    "Verdict = "^ a' ^" Time = " ^b'^ " Memory = "^c'^"\n"
+
+let verdict_and_performance f t =
+    let t1 = Sys.time() in
+    let m1 = Gc.minor_words () in
+    let verdict = run_trace f t in
+    let t2 = Sys.time() in
+    let m2 = Gc.minor_words () in
+        str_of_tuple (verdict,t2 -. t1, m2 -. m1)
+
+
+
+let result_writer formula traces  =
+    let r = List.map (verdict_and_performance formula) traces in
+    let r' = zip (traces,r) in
+    let r'' = List.map (fun (a,b) -> a ^ ": \n"^b) r' in
+    List.map print_string r''
+
+
+(*
+let results formula traces =
+    let r = List.map (verdict_and_performance formula) traces in
+*)
+
+
+
 let () =
   let ops = Sys.argv.(1) in
   if ops = "-interactive"
@@ -239,13 +296,8 @@ let () =
   else
     (let f = formula_of_string Sys.argv.(2) in
      let t = Sys.argv.(3) in
+     let t' = dir_contents t in
      let f' = string_of_formula f in
-     print_string ("======================================== \n");
-     print_string ("Entered TWLTL Formula: ");
-     print_string (f' ^ "\n");
-     print_string ("======================================== \n");
-     let verdict = run_trace f t in
-     print_string ("======================================== \n");
-     print_string ("Verdict: ");
-     print_string ((string_of_formula verdict) ^ "\n");
-     print_string ("======================================== \n"))
+     print_string ("====================Result========================= \n");
+     result_writer f t' ;
+     print_string ("=================================================== \n"))

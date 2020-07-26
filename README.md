@@ -8,9 +8,47 @@
 ```
 ./twtl.native -interactive "(A holds_for 3) within [0,5]"
 ```
-- Automatic Verification (accepts complete trace as .trace file)
+- Automatic Verification (accepts a folder which contains traces, e.g., t1.trace, t2.trace, etc.)
+
+- Format for the trace file:
+
 ```
-./twtl.native -automatic "(A holds_for 3) within [0,5]" "t2.trace"
+0 A B C
+1 A
+2 A
+3 A B C D E
+```
+
+- Example ("traces" is a folder name)
+
+```
+./twtl.native -automatic "(A holds_for 3) within [0,5]" "traces"
+```
+- Result (Time in "seconds" and Memory in "words")
+
+```
+====================Result========================= 
+traces/t2.trace: 
+Verdict = False Time = 7.1e-05 Memory = 467.
+traces/t6.trace: 
+Verdict = True Time = 0.000144 Memory = 386.
+traces/t1.trace: 
+Verdict = True Time = 5.1e-05 Memory = 386.
+traces/t10.trace: 
+Verdict = False Time = 8.2e-05 Memory = 467.
+traces/t3.trace: 
+Verdict = True Time = 6.1e-05 Memory = 386.
+traces/t7.trace: 
+Verdict = False Time = 8.8e-05 Memory = 467.
+traces/t5.trace: 
+Verdict = True Time = 5.2e-05 Memory = 386.
+traces/t9.trace: 
+Verdict = False Time = 0.000101 Memory = 467.
+traces/t4.trace : 
+Verdict = True Time = 6.4e-05 Memory = 386.
+traces/t8.trace: 
+Verdict = False Time = 0.000123 Memory = 467.
+=================================================== 
 ```
 
 ## Examples for Syntax
@@ -19,43 +57,10 @@
 A holds_for 3
 ```
 
-
 ```
 (A holds_for 3) * (B holds_for 3)
 ```
 
-
 ```
 (A holds_for 3) within [0,5]
-```
-
-
-
-```
-./twtl.native "A holds_for 3"
-========================================
-Entered TWLTL Formula: A holds_for 3 time units
-========================================
-Enter the Event in the form: time_point a b c):0 A B C
-========================================
-Pure Rewrite Step: True & A holds_for 2 time units
-========================================
-========================================
-Simplified Formula: A holds_for 2 time units
-========================================
-Enter the Event in the form: time_point a b c):1 A D
-========================================
-Pure Rewrite Step: True & A holds_for 1 time units
-========================================
- ========================================
-Simplified Formula: A holds_for 1 time units
-========================================
-Enter the Event in the form: time_point a b c):2 A E
-========================================
-Pure Rewrite Step: True
-========================================
-========================================
-Simplified Formula: True
-========================================
-**** STOPPING: Further rewriting will not change the evaluation ****
 ```

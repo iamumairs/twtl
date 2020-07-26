@@ -48,20 +48,28 @@ ocamlfind ocamlc -c -package str -package unix -I src -o lexer.cmo lexer.ml
 # Target: src/twtl.cmo, tags: { package(str), package(unix), byte, compile, extension:cmo, extension:ml, file:src/twtl.cmo, file:src/twtl.ml, implem, ocaml, quiet }
 ocamlfind ocamlc -c -package str -package unix -I src -o src/twtl.cmo src/twtl.ml
 + ocamlfind ocamlc -c -package str -package unix -I src -o src/twtl.cmo src/twtl.ml
-File "src/twtl.ml", lines 19-23, characters 13-5:
-19 | .............(match (reduce e) with
-20 |       | True -> False
-21 |       | False -> True
-22 |       | Neg f -> reduce f
-23 |     )
+File "src/twtl.ml", lines 26-30, characters 13-5:
+26 | .............(match (reduce e) with
+27 |       | True -> False
+28 |       | False -> True
+29 |       | Neg f -> reduce f
+30 |     )
 Warning 8: this pattern-matching is not exhaustive.
 Here is an example of a case that is not matched:
 (Hold (_, _)|NotHold (_, _)|And (_, _)|Or (_, _)|Imply (_, _)|Concat (_, _)|
 Within (_, _))
-File "src/twtl.ml", line 100, characters 3-4:
-100 |   |_ -> "I screwed up!!!"
+File "src/twtl.ml", line 107, characters 3-4:
+107 |   |_ -> "I screwed up!!!"
          ^
 Warning 11: this match case is unused.
+File "src/twtl.ml", line 302, characters 5-23:
+302 |      result_writer f t' ;
+           ^^^^^^^^^^^^^^^^^^
+Warning 10: this expression should have type unit.
+File "src/twtl.ml", line 300, characters 9-11:
+300 |      let f' = string_of_formula f in
+               ^^
+Warning 26: unused variable f'.
 # Target: parser.ml.depends, tags: { package(str), package(unix), extension:ml, file:parser.ml, ocaml, ocamldep, quiet }
 ocamlfind ocamldep -package str -package unix -modules parser.ml > parser.ml.depends
 # Target: src/formula.cmx, tags: { package(str), package(unix), compile, extension:cmx, extension:ml, file:src/formula.cmx, file:src/formula.ml, implem, native, ocaml, quiet }
@@ -86,20 +94,28 @@ ocamlfind ocamlopt -c -package str -package unix -I src -o lexer.cmx lexer.ml
 # Target: src/twtl.cmx, tags: { package(str), package(unix), compile, extension:cmx, extension:ml, file:src/twtl.cmx, file:src/twtl.ml, implem, native, ocaml, quiet }
 ocamlfind ocamlopt -c -package str -package unix -I src -o src/twtl.cmx src/twtl.ml
 + ocamlfind ocamlopt -c -package str -package unix -I src -o src/twtl.cmx src/twtl.ml
-File "src/twtl.ml", lines 19-23, characters 13-5:
-19 | .............(match (reduce e) with
-20 |       | True -> False
-21 |       | False -> True
-22 |       | Neg f -> reduce f
-23 |     )
+File "src/twtl.ml", lines 26-30, characters 13-5:
+26 | .............(match (reduce e) with
+27 |       | True -> False
+28 |       | False -> True
+29 |       | Neg f -> reduce f
+30 |     )
 Warning 8: this pattern-matching is not exhaustive.
 Here is an example of a case that is not matched:
 (Hold (_, _)|NotHold (_, _)|And (_, _)|Or (_, _)|Imply (_, _)|Concat (_, _)|
 Within (_, _))
-File "src/twtl.ml", line 100, characters 3-4:
-100 |   |_ -> "I screwed up!!!"
+File "src/twtl.ml", line 107, characters 3-4:
+107 |   |_ -> "I screwed up!!!"
          ^
 Warning 11: this match case is unused.
+File "src/twtl.ml", line 302, characters 5-23:
+302 |      result_writer f t' ;
+           ^^^^^^^^^^^^^^^^^^
+Warning 10: this expression should have type unit.
+File "src/twtl.ml", line 300, characters 9-11:
+300 |      let f' = string_of_formula f in
+               ^^
+Warning 26: unused variable f'.
 # Target: src/twtl.native, tags: { package(str), package(unix), dont_link_with, extension:native, file:src/twtl.native, link, native, ocaml, program, quiet }
 ocamlfind ocamlopt -linkpkg -package str -package unix -I src src/formula.cmx parser.cmx lexer.cmx src/twtl.cmx -o src/twtl.native
 # Compilation successful.
