@@ -305,17 +305,26 @@ let verdict_and_performance f t =
     let verdict = run_trace f t in
     let t2 = Sys.time() in
     let m2 = Gc.minor_words () in
-        str_of_tuple (verdict,t2 -. t1, m2 -. m1)
+        (t2 -. t1, m2 -. m1)
 
+let rec sumf l = 
+        match l with 
+        [] -> 0. 
+      | h :: t -> fst (h) +. (sumf t)
 
+let rec sumr l = 
+      match l with 
+      [] -> 0. 
+    | h :: t -> snd (h) +. (sumr t)     
 
 let result_writer formula traces  =
     let r = List.map (verdict_and_performance formula) traces in
-    let r' = zip (traces,r) in
-    let r'' = List.map (fun (a,b) -> a ^ ": \n"^b) r' in
-    List.map print_string r''
+    let time = sumf r and 
+        memory = ((sumr r) *. 2.0) /. (1000000.0) in 
+    print_string ("Time = "^ string_of_float(time) ^ "\n") ;
+    print_string ("Memory = "^ string_of_float(memory) ^ "\n")
 
-
+  
 (*
 let results formula traces =
     let r = List.map (verdict_and_performance formula) traces in

@@ -66,12 +66,12 @@ File "src/twtl.ml", line 182, characters 3-4:
 182 |   |_ -> "I screwed up!!!"
          ^
 Warning 11: this match case is unused.
-File "src/twtl.ml", line 378, characters 5-23:
-378 |      result_writer f t' ;
-           ^^^^^^^^^^^^^^^^^^
-Warning 10: this expression should have type unit.
-File "src/twtl.ml", line 376, characters 9-11:
-376 |      let f' = string_of_formula f in
+File "src/twtl.ml", line 305, characters 8-15:
+305 |     let verdict = run_trace f t in
+              ^^^^^^^
+Warning 26: unused variable verdict.
+File "src/twtl.ml", line 385, characters 9-11:
+385 |      let f' = string_of_formula f in
                ^^
 Warning 26: unused variable f'.
 # Target: parser.ml.depends, tags: { package(str), package(unix), extension:ml, file:parser.ml, ocaml, ocamldep, quiet }
@@ -116,12 +116,12 @@ File "src/twtl.ml", line 182, characters 3-4:
 182 |   |_ -> "I screwed up!!!"
          ^
 Warning 11: this match case is unused.
-File "src/twtl.ml", line 378, characters 5-23:
-378 |      result_writer f t' ;
-           ^^^^^^^^^^^^^^^^^^
-Warning 10: this expression should have type unit.
-File "src/twtl.ml", line 376, characters 9-11:
-376 |      let f' = string_of_formula f in
+File "src/twtl.ml", line 305, characters 8-15:
+305 |     let verdict = run_trace f t in
+              ^^^^^^^
+Warning 26: unused variable verdict.
+File "src/twtl.ml", line 385, characters 9-11:
+385 |      let f' = string_of_formula f in
                ^^
 Warning 26: unused variable f'.
 # Target: src/twtl.native, tags: { package(str), package(unix), dont_link_with, extension:native, file:src/twtl.native, link, native, ocaml, program, quiet }
